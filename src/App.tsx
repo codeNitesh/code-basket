@@ -1,26 +1,21 @@
+import { Container } from '@mui/material';
 import React from 'react';
-import logo from './logo.svg';
+import { Outlet } from 'react-router-dom';
 import './App.css';
+import ElevateAppBar from './components/ElevatedAppBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function goToGitHubRepo(){
+  const githubURL = 'https://github.com/codeNitesh/code-basket/';
+  window.location.replace(githubURL)
 }
 
-export default App;
+export default function App() {
+  return (
+    <>
+    <ElevateAppBar title='CodeBasket' buttonTxt='GitHub Repo' goToGitHubRepo={goToGitHubRepo}/>
+    <Container>
+      <Outlet />
+    </Container>
+    </>
+  );
+}
