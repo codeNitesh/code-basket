@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 interface Props {
   title: string;
   buttonTxt: string;
-  goToGitHubRepo: ()=> void;
+  goToGitHubRepo: () => void;
 }
 
 export default function ElevateAppBar(props: Props) {
@@ -20,7 +20,9 @@ export default function ElevateAppBar(props: Props) {
           <Typography sx={{ flexGrow: 1 }} variant="h6" component="div">
             {props.title}
           </Typography>
-          <Button onClick={props.goToGitHubRepo} color="inherit">{props.buttonTxt}</Button>
+          <Button onClick={props.goToGitHubRepo} color="inherit">
+            {props.buttonTxt}
+          </Button>
         </Toolbar>
       </AppBar>
       <Toolbar />
