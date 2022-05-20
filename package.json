@@ -29,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier:check": "prettier --check '**/*.{ts,js,tsx,jsx,scss,css,md,mdx,json,yaml,yml}'",
+    "prettier:write": "prettier --write '**/*.{ts,js,tsx,jsx,scss,css,md,mdx,json,yaml,yml}'"
   },
   "eslintConfig": {
     "extends": [
