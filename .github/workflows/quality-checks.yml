@@ -1,0 +1,47 @@
+name: Quality Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  quality_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout code
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
+      - uses: actions/setup-node@v3
+        name: Setup Node.js 14.x
+        with:
+          node-version: 14
+          cache: "npm"
+
+      - name: Install dependencies with NPM
+        run: npm ci
+
+      - name: Check Prettier formatting
+        run: npm run prettier:check
+
+      - name: Check ESLint
+        run: npm run lint
+
+      - name: Check Typescript compiles without errors
+        run: ./node_modules/.bin/tsc --noEmit
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Copy package.json version to Sonar config
+        run: |
+          PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
+          echo "sonar.projectVersion=${PACKAGE_VERSION}" >> sonar-project.properties
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
