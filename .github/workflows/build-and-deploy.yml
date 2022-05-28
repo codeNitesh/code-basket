@@ -65,7 +65,7 @@ jobs:
         run: npm ci
 
       - name: Build static code bundles
-        run: npm build
+        run: npm run build
 
       - name: Upload build atrifact
         uses: actions/upload-artifact@v2
