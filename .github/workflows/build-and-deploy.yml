@@ -71,7 +71,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: code-basket-front-end
-          path: ./build
+          path: |
+            ./build
+            ./staticwebapp.config.json
 
   deploy:
     runs-on: ubuntu-latest
