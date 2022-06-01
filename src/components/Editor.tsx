@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 
 import ZoomOutMapRoundedIcon from "@mui/icons-material/ZoomOutMapRounded";
 import ZoomInMapRoundedIcon from "@mui/icons-material/ZoomInMapRounded";
+import "../App.css";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
+import "codemirror/mode/xml/xml";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/css/css";
+import { Controlled as ControlledEditor } from "react-codemirror2";
 
 interface Props {
   title: string;
+  language: 'css' | 'xml' | 'javascript';
+  value: string;
+  onCodeChange: (value: string) => void;
 }
 
 function expandButton(editorExpanded: boolean, changeEditorExpand: () => void) {
@@ -36,30 +45,44 @@ export default function Editor(props: Props) {
   const changeEditorExpand = () => {
     setEditorExpanded(!editorExpanded);
   };
+
+
+  // use const
+  function handleEditorChange(editor: any, data: string, value: string) {
+    props.onCodeChange(value);
+  }
   return (
     <>
-      <Box
-        sx={{
-          flex: editorExpanded ? 4 : 0,
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
+      <div
+        className="flex-grow-1 m-2 d-flex flex-column"
+        style={{
           border: ".5px solid #666b7a",
+          flexBasis: 0,
+          overflow: 'hidden'
         }}
       >
         <header className="d-flex justify-content-between align-items-center">
-          <Typography sx={{ p: 0.5, color: "#d8ddf0" }} variant="subtitle2">
+          <Typography
+            sx={{ p: 0.5, pl: 2, color: "#d8ddf0" }}
+            variant="subtitle2"
+          >
             {props.title}
           </Typography>
           {expandButton(editorExpanded, changeEditorExpand)}
         </header>
-        <Box
-          sx={{
-            flex: 1,
-            backgroundColor: props.title === "PREVIEW" ? "WHITE" : "#1d1e22",
+        <ControlledEditor
+          onBeforeChange={handleEditorChange}
+          value={props.value}
+          className="flex-grow-1 overflow-hidden"
+          options={{
+            lineWrapping: true,
+            lint: true,
+            mode: props.language,
+            lineNumbers: true,
+            theme: "material",
           }}
-        ></Box>
-      </Box>
+        />
+      </div>
     </>
   );
 }
