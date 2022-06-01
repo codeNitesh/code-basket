@@ -15,7 +15,6 @@ export default function CodeBasket() {
   const [srcDoc, setSrcDoc] = useState("");
 
   useEffect(() => {
-
     const timeout = setTimeout(() => {
       setSrcDoc(`
           <html>
@@ -28,7 +27,7 @@ export default function CodeBasket() {
       `);
     }, 250);
 
-    return () => clearTimeout(timeout)
+    return () => clearTimeout(timeout);
   }, [html, css, javascript]);
 
   return (
@@ -48,7 +47,7 @@ export default function CodeBasket() {
       />
       <div
         style={{
-          display: "flex"
+          display: "flex",
         }}
       >
         <Editor

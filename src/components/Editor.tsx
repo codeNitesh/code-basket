@@ -14,7 +14,7 @@ import { Controlled as ControlledEditor } from "react-codemirror2";
 
 interface Props {
   title: string;
-  language: 'css' | 'xml' | 'javascript';
+  language: "css" | "xml" | "javascript";
   value: string;
   onCodeChange: (value: string) => void;
 }
@@ -46,11 +46,10 @@ export default function Editor(props: Props) {
     setEditorExpanded(!editorExpanded);
   };
 
-
-  // use const
-  function handleEditorChange(editor: any, data: string, value: string) {
+  const handleEditorChange = (editor: any, data: string, value: string) => {
     props.onCodeChange(value);
-  }
+  };
+
   return (
     <>
       <div
@@ -58,7 +57,7 @@ export default function Editor(props: Props) {
         style={{
           border: ".5px solid #666b7a",
           flexBasis: 0,
-          overflow: 'hidden'
+          overflow: "hidden",
         }}
       >
         <header className="d-flex justify-content-between align-items-center">
