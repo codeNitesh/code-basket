@@ -2,36 +2,6 @@
 
 exports[`App component renders to match snapshot 1`] = `
 <body>
-  <div>
-    <header
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
-    >
-      <div
-        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
-      >
-        <div
-          class="MuiTypography-root MuiTypography-h6 css-1juivf6-MuiTypography-root"
-        >
-          CodeBasket
-        </div>
-        <button
-          class="MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButtonBase-root  css-1y942vo-MuiButtonBase-root-MuiButton-root"
-          tabindex="0"
-          type="button"
-        >
-          GitHub Repo
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </button>
-      </div>
-    </header>
-    <div
-      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
-    />
-    <div
-      class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
-    />
-  </div>
+  <div />
 </body>
 `;
