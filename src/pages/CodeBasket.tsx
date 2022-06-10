@@ -15,6 +15,24 @@ export default function CodeBasket() {
   const [srcDoc, setSrcDoc] = useState("");
 
   useEffect(() => {
+    const htmlData = localStorage.getItem("codeBasket_HTML");
+    const cssData = localStorage.getItem("codeBasket_CSS");
+    const jsData = localStorage.getItem("codeBasket_JAVASCRIPT");
+
+    if (htmlData != null) {
+      setHtml(JSON.parse(htmlData));
+    }
+
+    if (cssData != null) {
+      setCss(JSON.parse(cssData));
+    }
+
+    if (jsData != null) {
+      setJavascript(JSON.parse(jsData));
+    }
+  }, []);
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
       setSrcDoc(`
           <html>
@@ -25,6 +43,9 @@ export default function CodeBasket() {
           <script>${javascript}</script>
           </html>
       `);
+      localStorage.setItem("codeBasket_HTML", JSON.stringify(html));
+      localStorage.setItem("codeBasket_CSS", JSON.stringify(css));
+      localStorage.setItem("codeBasket_JAVASCRIPT", JSON.stringify(javascript));
     }, 250);
 
     return () => clearTimeout(timeout);
