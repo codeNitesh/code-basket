@@ -46,7 +46,7 @@ export default function Editor(props: Props) {
     setEditorExpanded(!editorExpanded);
   };
 
-  const handleEditorChange = (editor: any, data: string, value: string) => {
+  const handleEditorChange = (_editor: any, _data: string, value: string) => {
     props.onCodeChange(value);
   };
 
