@@ -2,7 +2,6 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import CssBaseline from "@mui/material/CssBaseline";
 import { Button } from "@mui/material";
 
 interface Props {
@@ -14,10 +13,11 @@ interface Props {
 export default function ElevateAppBar(props: Props) {
   return (
     <React.Fragment>
-      <CssBaseline />
-      <AppBar>
+      <AppBar
+        sx={{ backgroundColor: "#060606", borderBottom: ".5px solid #666b7a" }}
+      >
         <Toolbar>
-          <Typography sx={{ flexGrow: 1 }} variant="h6" component="div">
+          <Typography sx={{ flexGrow: 1 }} variant="h6">
             {props.title}
           </Typography>
           <Button onClick={props.goToGitHubRepo} color="inherit">

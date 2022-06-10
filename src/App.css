@@ -1,0 +1,8 @@
+.editorExpanded {
+  flex-grow: 0 !important;
+}
+
+.editorExpanded .CodeMirror-scroll {
+  position: absolute !important;
+  overflow: hidden !important;
+}
