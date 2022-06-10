@@ -53,11 +53,12 @@ export default function Editor(props: Props) {
   return (
     <>
       <div
-        className="flex-grow-1 m-2 d-flex flex-column"
+        className={`flex-grow-1 m-2 d-flex flex-column ${
+          editorExpanded ? "" : "editorExpanded"
+        }`}
         style={{
           border: ".5px solid #666b7a",
           flexBasis: 0,
-          overflow: "hidden",
         }}
       >
         <header className="d-flex justify-content-between align-items-center">
