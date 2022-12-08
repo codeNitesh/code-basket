@@ -7,8 +7,11 @@ const cors = require('cors');
 
 const app = express()
 
+const PORT = process.env.PORT || 3030;
+
+
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: '*'
 }));
 
 mongoose.connect(url, {useNewUrlParser:true})
@@ -23,6 +26,6 @@ app.use(express.json())
 const basketsRouter = require('./routes/baskets')
 app.use('/baskets',basketsRouter)
 
-app.listen(9000, () => {
+app.listen(PORT, () => {
     console.log('Server started')
 })
