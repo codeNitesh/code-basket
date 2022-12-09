@@ -28,7 +28,7 @@ export default function CodeBasket() {
       js: JSON.stringify(javascript),
     };
 
-    const response = await fetch(`https://backend-codebasket.onrender.com/baskets/${id}`, {
+    const response = await fetch(`https://code-basket-production.up.railway.app/baskets/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -38,7 +38,7 @@ export default function CodeBasket() {
   };
 
   const getBasket = async (_id: string) => {
-    const response = await fetch(`https://backend-codebasket.onrender.com/baskets/${_id}`);
+    const response = await fetch(`https://code-basket-production.up.railway.app/baskets/${_id}`);
     return await response.json();
   };
 
