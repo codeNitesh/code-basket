@@ -80,7 +80,7 @@ export default function Home() {
       html: "",
       basketName: basketName,
     };
-    const response = await fetch(`https://backend-codebasket.onrender.com/baskets`, {
+    const response = await fetch(`https://code-basket-production.up.railway.app/baskets`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
